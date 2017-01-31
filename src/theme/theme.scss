@@ -1,0 +1,70 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding-top: 10px;
+}
+
+body > div {
+  min-height: 100%;
+  position: relative;
+}
+
+a {
+  cursor: pointer;
+}
+
+.appContent {
+  padding-bottom: 30px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+
+  .copyright {
+    padding-bottom: 0;
+  }
+}
+
+// two wallets side by side on the same display look better with this
+@media (min-width: 768px) and (max-width: 992px) {
+  .container {
+    width: 95%;
+  }
+}
+
+.navbar-collapse {
+  &.collapsing, &.in {
+    background: #fff;
+  }
+}
+.navbar-toggle {
+  border: 0;
+}
+
+// for hotkey containers
+div[tabindex="-1"]:focus {
+  outline: 0;
+}
+
+// Dropzone
+.dropzone .dz-preview {
+  margin: 5px;
+}
+.dropzone .dz-preview .dz-image {
+  width: 80px;
+  height: 80px;
+
+  img {
+    width: 100%;
+  }
+}
+.dropzone .dz-preview .dz-progress {
+  top: 40%;
+  width: 50px;
+  margin-left: -25px;
+}

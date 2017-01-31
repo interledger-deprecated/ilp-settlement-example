@@ -1,0 +1,187 @@
+{
+  "name": "ilp-settlement-example",
+  "version": "1.0.0",
+  "description": "ILP Settlement Example",
+  "main": "bin/server.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interledgerjs/ilp-settlement-example"
+  },
+  "author": "Interledger Team <info@interledger.org>",
+  "homepage": "https://github.com/interledgerjs/ilp-kit",
+  "keywords": [
+    "five-bells",
+    "ilp",
+    "ledger",
+    "wallet",
+    "ui",
+    "payments",
+    "finance",
+    "settlement"
+  ],
+  "scripts": {
+    "start": "DEBUG_COLORS=1 concurrently -p \"[{name}]\" -n \"api,client\" -c \"red,blue\" \"npm run start-prod-api\" \"npm run start-prod\"",
+    "start-prod": "better-npm-run start-prod",
+    "start-prod-api": "better-npm-run start-prod-api",
+    "build": "better-npm-run build",
+    "build-dlls": "node ./bin/dlls.js",
+    "postinstall": "npm rebuild node-sass; npm run build",
+    "lint": "eslint -c .eslintrc src api",
+    "start-dev": "better-npm-run start-dev",
+    "start-dev-api": "better-npm-run start-dev-api",
+    "watch-client": "better-npm-run watch-client",
+    "dev": "DEBUG_COLORS=1 concurrently -p \"[{name}]\" -n \"watcher,api,client\" -c \"yellow,red,blue\" \"npm run watch-client\" \"npm run start-dev-api\" \"npm run start-dev\""
+  },
+  "betterScripts": {
+    "start-prod": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production"
+      }
+    },
+    "start-prod-api": {
+      "command": "node ./bin/api.js",
+      "env": {
+        "NODE_PATH": "./api",
+        "NODE_ENV": "production"
+      }
+    },
+    "start-dev": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development"
+      }
+    },
+    "start-dev-api": {
+      "command": "node ./bin/api.js",
+      "env": {
+        "NODE_PATH": "./api",
+        "NODE_ENV": "development"
+      }
+    },
+    "watch-client": {
+      "command": "node webpack/webpack-dev-server.js",
+      "env": {
+        "UV_THREADPOOL_SIZE": 100,
+        "NODE_PATH": "./src"
+      }
+    },
+    "build": {
+      "command": "webpack --verbose --colors --display-error-details --progress --config webpack/prod.config.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  },
+  "dependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "~6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-lodash": "^3.2.11",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-display-name": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-plugin-typecheck": "^3.9.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "babel-runtime": "^6.18.0",
+    "better-npm-run": "0.0.13",
+    "bignumber.js": "^3.0.1",
+    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass-loader": "vhpoet/bootstrap-sass-loader",
+    "classnames": "^2.2.5",
+    "clean-webpack-plugin": "^0.1.10",
+    "co": "^4.6.0",
+    "co-foreach": "^1.1.1",
+    "compression": "^1.6.0",
+    "concurrently": "^3.1.0",
+    "constitute": "^1.6.2",
+    "css-loader": "^0.23.1",
+    "express": "^4.14.0",
+    "express-force-ssl": "^0.3.1",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "file-loader": "^0.9.0",
+    "font-awesome": "^4.7.0",
+    "font-awesome-webpack": "0.0.4",
+    "hoist-non-react-statics": "^1.0.3",
+    "http-proxy": "^1.12.0",
+    "istanbul": "^0.4.5",
+    "json-loader": "^0.5.4",
+    "kcors": "^1.0.1",
+    "koa": "^1.1.2",
+    "koa-body": "^1.4.0",
+    "koa-mag": "^1.1.0",
+    "koa-passport": "^1.3.1",
+    "koa-router": "^5.3.0",
+    "koa-session": "^3.3.1",
+    "koa.io": "0.0.3",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "lodash": "^4.16.4",
+    "mag": "^0.9.1",
+    "mag-hub": "^0.1.1",
+    "node-sass": "^3.8.0",
+    "piping": "^0.3.0",
+    "pretty-error": "^1.2.0",
+    "raw-loader": "^0.5.1",
+    "react": "^15.4.0",
+    "react-addons-create-fragment": "^15.4.0",
+    "react-addons-css-transition-group": "^15.4.0",
+    "react-addons-test-utils": "^15.4.0",
+    "react-bootstrap": "^0.30.3",
+    "react-dom": "^15.4.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "react-router-bootstrap": "^0.23.1",
+    "react-router-redux": "^3.0.0",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.4",
+    "reconnect-core": "^1.3.0",
+    "redbox-react": "^1.1.1",
+    "redux": "^3.6.0",
+    "redux-async-connect": "^1.0.0-rc4",
+    "redux-form": "^5.3.1",
+    "redux-pagination": "^0.1.0",
+    "request-ip": "^1.2.3",
+    "resolve-url-loader": "^1.6.0",
+    "sass-loader": "^3.2.3",
+    "sequelize": "^3.17.1",
+    "serialize-javascript": "^1.1.2",
+    "serve-favicon": "^2.3.0",
+    "socket.io-client": "^1.5.0",
+    "strip-loader": "^0.1.0",
+    "style-loader": "^0.13.1",
+    "superagent": "^1.8.0",
+    "superagent-promise": "^1.1.0",
+    "url-loader": "^0.5.6",
+    "uuid4": "^1.0.0",
+    "webpack": "^1.13.2",
+    "webpack-isomorphic-tools": "^2.5.7"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "3.13.1",
+    "eslint-config-airbnb": "14.0.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.9.0",
+    "redux-devtools": "^3.3.1",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.0.11",
+    "redux-mock-store": "1.0.3",
+    "sqlite3": "^3.1.1",
+    "webpack-dev-middleware": "^1.7.0",
+    "webpack-hot-middleware": "^2.12.2"
+  },
+  "engines": {
+    "node": "6.9.1"
+  }
+}
